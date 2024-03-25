@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "ccf761bb1e6f038d",
+    "type": "split",
+    "children": [
+      {
+        "id": "73f2c148e0103ca2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bb34452006d85725",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Symfony/Commande.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3eb168294d7da2bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Framework.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "131570f498df7ce0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Historique.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "361e86d26bf00676",
+    "type": "split",
+    "children": [
+      {
+        "id": "e29d635245877919",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "516326cc9d3108f7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e7b22d084f58de48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "04c1d8cc805fa35e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3175595501a97e66",
+    "type": "split",
+    "children": [
+      {
+        "id": "c28bc781f456e88d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7aca8346fd36c87e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Symfony/Commande.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "000994465b53006a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Symfony/Commande.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "104e6679beaf64b8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9b2f7e9ca237424b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Symfony/Commande.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false
+    }
+  },
+  "active": "bb34452006d85725",
+  "lastOpenFiles": [
+    "Historique.md",
+    "Framework.md",
+    "Symfony/Commande.md",
+    "Symfony"
+  ]
+}
