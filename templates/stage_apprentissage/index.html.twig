@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StageApprentissage index{% endblock %}
+
+{% block body %}
+    <h1>StageApprentissage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stage_apprentissage in stage_apprentissages %}
+            <tr>
+                <td>{{ stage_apprentissage.id }}</td>
+                <td>{{ stage_apprentissage.DateDebut ? stage_apprentissage.DateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ stage_apprentissage.DateFin ? stage_apprentissage.DateFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_stage_apprentissage_show', {'id': stage_apprentissage.id}) }}">show</a>
+                    <a href="{{ path('app_stage_apprentissage_edit', {'id': stage_apprentissage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stage_apprentissage_new') }}">Create new</a>
+{% endblock %}

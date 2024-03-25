@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StageApprentissage{% endblock %}
+
+{% block body %}
+    <h1>StageApprentissage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stage_apprentissage.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ stage_apprentissage.DateDebut ? stage_apprentissage.DateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ stage_apprentissage.DateFin ? stage_apprentissage.DateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stage_apprentissage_index') }}">back to list</a>
+
+    <a href="{{ path('app_stage_apprentissage_edit', {'id': stage_apprentissage.id}) }}">edit</a>
+
+    {{ include('stage_apprentissage/_delete_form.html.twig') }}
+{% endblock %}
