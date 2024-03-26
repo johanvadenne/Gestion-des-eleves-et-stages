@@ -21,6 +21,16 @@ class StageApprentissageRepository extends ServiceEntityRepository
         parent::__construct($registry, StageApprentissage::class);
     }
 
+    public function findAllWithRelations()
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.IdEtudiant', 'e')
+            ->leftJoin('s.IdEntreprise', 'en')
+            ->addSelect('e', 'en')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return StageApprentissage[] Returns an array of StageApprentissage objects
     //     */

@@ -11,6 +11,8 @@
                 <th>Id</th>
                 <th>DateDebut</th>
                 <th>DateFin</th>
+                <th>tes1</th>
+                <th>tes2</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +22,8 @@
                 <td>{{ stage_apprentissage.id }}</td>
                 <td>{{ stage_apprentissage.DateDebut ? stage_apprentissage.DateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ stage_apprentissage.DateFin ? stage_apprentissage.DateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ stage_apprentissage.IdEtudiant.NomEleve }}</td>
+                <td>{{ stage_apprentissage.IdEntreprise.NomEntreprise }}</td>
                 <td>
                     <a href="{{ path('app_stage_apprentissage_show', {'id': stage_apprentissage.id}) }}">show</a>
                     <a href="{{ path('app_stage_apprentissage_edit', {'id': stage_apprentissage.id}) }}">edit</a>

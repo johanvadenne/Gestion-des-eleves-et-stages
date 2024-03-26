@@ -18,7 +18,7 @@ class StageApprentissageController extends AbstractController
     public function index(StageApprentissageRepository $stageApprentissageRepository): Response
     {
         return $this->render('stage_apprentissage/index.html.twig', [
-            'stage_apprentissages' => $stageApprentissageRepository->findAll(),
+            'stage_apprentissages' => $stageApprentissageRepository->findAllWithRelations(),
         ]);
     }
 

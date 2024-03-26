@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>NomEleve</th>
                 <th>PrenomEtudiant</th>
+                <th>Etude</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ etudiant.id }}</td>
                 <td>{{ etudiant.NomEleve }}</td>
                 <td>{{ etudiant.PrenomEtudiant }}</td>
+                <td>{{ etudiant.IdEtude.NomEtude }}</td>
                 <td>
                     <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">show</a>
                     <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>

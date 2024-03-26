@@ -42,6 +42,8 @@ security:
         - { path: ^/register, roles: [ROLE_ADMIN] }
         - { path: ^/etudiant, roles: [ROLE_ADMIN,ROLE_PROF] }
         - { path: ^/etude, roles: [ROLE_ADMIN,ROLE_PROF] }
+        - { path: ^/entreprise, roles: [ROLE_ADMIN,ROLE_PROF] }
+        - { path: ^/stage/apprentissage, roles: [ROLE_ADMIN,ROLE_PROF] }
 
 when@test:
     security:
