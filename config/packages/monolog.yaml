@@ -41,6 +41,11 @@ when@test:
                 type: stream
                 path: "%kernel.logs_dir%/%kernel.environment%.log"
                 level: debug
+            personalized:
+                type: stream
+                path: '%kernel.project_dir%/var/log_personalise.log'
+                level: debug
+                channels: ["app"]
 
 when@prod:
     monolog:
@@ -65,3 +70,8 @@ when@prod:
                 channels: [deprecation]
                 path: php://stderr
                 formatter: monolog.formatter.json
+            personalized:
+                type: stream
+                path: '%kernel.project_dir%/var/log_personalise.log'
+                level: debug
+                channels: ["app"]
