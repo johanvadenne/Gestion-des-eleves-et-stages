@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise index{% endblock %}
+{% block title %}Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
+    <h1>Entreprise</h1>
 
+    <a class="btn btn-primary d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_entreprise_new') }}">Nouvelle entreprise 🏢</a>
     <table class="table">
         <thead>
             <tr>
@@ -27,8 +28,8 @@
                 <td>{{ entreprise.Ville }}</td>
                 <td>{{ entreprise.SiteWeb }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">👀</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">✏</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +40,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_new') }}">Create new</a>
 {% endblock %}

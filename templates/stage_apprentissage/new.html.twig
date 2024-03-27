@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New StageApprentissage{% endblock %}
+{% block title %}Nouveau stage/apprentissage{% endblock %}
 
 {% block body %}
-    <h1>Create new StageApprentissage</h1>
+    <h1>Nouveau stage/apprentissage</h1>
 
     {{ include('stage_apprentissage/_form.html.twig') }}
 
-    <a href="{{ path('app_stage_apprentissage_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('app_stage_apprentissage_index') }}">retour</a>
 {% endblock %}

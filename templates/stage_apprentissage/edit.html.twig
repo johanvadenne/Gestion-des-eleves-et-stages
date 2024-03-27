@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit StageApprentissage{% endblock %}
+{% block title %}Édition stage & apprentissage{% endblock %}
 
 {% block body %}
-    <h1>Edit StageApprentissage</h1>
+    <h1>Édition stage & apprentissage</h1>
 
-    {{ include('stage_apprentissage/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('stage_apprentissage/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_stage_apprentissage_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('app_stage_apprentissage_index') }}">retour</a>
 
     {{ include('stage_apprentissage/_delete_form.html.twig') }}
 {% endblock %}

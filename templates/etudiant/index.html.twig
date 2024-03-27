@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etudiant index{% endblock %}
+{% block title %}Étudiants{% endblock %}
 
 {% block body %}
-    <h1>Etudiant index</h1>
+<h1>Étudiants</h1>
 
+    <a class="btn btn-primary" href="{{ path('app_etudiant_new') }}">Nouvelle étudiant 👨‍🎓👩‍🎓</a>
     <table class="table">
         <thead>
             <tr>
@@ -23,8 +24,8 @@
                 <td>{{ etudiant.PrenomEtudiant }}</td>
                 <td>{{ etudiant.IdEtude.NomEtude }}</td>
                 <td>
-                    <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">show</a>
-                    <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">👀</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">✏</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +36,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_etudiant_new') }}">Create new</a>
 {% endblock %}

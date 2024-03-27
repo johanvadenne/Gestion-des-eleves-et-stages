@@ -14,15 +14,22 @@
     </head>
     <body>
         <nav>
-            <a href="/entreprise"><b>Entreprise</b></a>
-            <a href="/etudiant"><b>Etudiant</b></a>
-            <a href="/etude"><b>Etude</b></a>
-            <a href="/stage/apprentissage"><b>Stage / Apprentissage</b></a>
+            <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none rounded-2" href="/entreprise"><b>Entreprise</b></a>
+            <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none rounded-2" href="/etudiant"><b>Etudiant</b></a>
+            <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none rounded-2" href="/etude"><b>Etude</b></a>
+            <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none rounded-2" href="/stage/apprentissage"><b>Stage / Apprentissage</b></a>
+            <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none rounded-2" href="/"><b>Accueil</b></a>
         </nav>
         {% block body %}{% endblock %}
         <footer>
+            {% if app.request.attributes.get('_route') != 'app_login' %}
+                {% if app.user %}
+                    <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a><br>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ path('app_entreprise_index') }}">Connexion</a><br>
+                {% endif %}
+            {% endif %}
             <a href="https://fenelon-notredame.com/">Lycée Fénélon Notre Dame</a>
-            <a href="/logout">Déconnexion</a>
         </footer>
     </body>
 </html>

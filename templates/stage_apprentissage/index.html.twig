@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}StageApprentissage index{% endblock %}
+{% block title %}stage & apprentissage{% endblock %}
 
 {% block body %}
-    <h1>StageApprentissage index</h1>
+<h1>stage & apprentissage</h1>
 
+<a class="btn btn-primary" href="{{ path('app_stage_apprentissage_new') }}">Nouveau stage/apprentissage</a>
     <table class="table">
         <thead>
             <tr>
@@ -25,8 +26,8 @@
                 <td>{{ stage_apprentissage.IdEtudiant.NomEleve }}</td>
                 <td>{{ stage_apprentissage.IdEntreprise.NomEntreprise }}</td>
                 <td>
-                    <a href="{{ path('app_stage_apprentissage_show', {'id': stage_apprentissage.id}) }}">show</a>
-                    <a href="{{ path('app_stage_apprentissage_edit', {'id': stage_apprentissage.id}) }}">edit</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_stage_apprentissage_show', {'id': stage_apprentissage.id}) }}">👀</a>
+                    <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_stage_apprentissage_edit', {'id': stage_apprentissage.id}) }}">✏</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_stage_apprentissage_new') }}">Create new</a>
 {% endblock %}
