@@ -10,10 +10,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Psr\Log\LoggerInterface;
 
 #[Route('/entreprise')]
 class EntrepriseController extends AbstractController
 {
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     #[Route('/', name: 'app_entreprise_index', methods: ['GET'])]
     public function index(EntrepriseRepository $entrepriseRepository): Response
     {
@@ -30,6 +38,8 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('NOUVELLE ENTREPRISE');
+
             $entityManager->persist($entreprise);
             $entityManager->flush();
 
@@ -57,6 +67,8 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('ENTREPRISE MODIFIÉE');
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
@@ -72,6 +84,8 @@ class EntrepriseController extends AbstractController
     public function delete(Request $request, Entreprise $entreprise, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->getPayload()->get('_token'))) {
+            $this->logger->info('ENTREPRISE SUPPRIMÉE');
+
             $entityManager->remove($entreprise);
             $entityManager->flush();
         }

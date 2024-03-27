@@ -15,15 +15,19 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Psr\Log\LoggerInterface;
+
 
 class GestionEtudiantStageAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    private $logger;
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    public function __construct(private UrlGeneratorInterface $urlGenerator, LoggerInterface $logger)
     {
+        $this->logger = $logger;
     }
 
     public function authenticate(Request $request): Passport
@@ -45,6 +49,14 @@ class GestionEtudiantStageAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+            $session = $request->getSession();
+            $lastUsername = $session->get('_security.last_username');
+            $username = $lastUsername ?? 'Unknown';
+            $ip = $request->getClientIp();
+
+            // Ajoutez un message de journalisation pour la connexion réussie
+            $this->logger->info(sprintf('Connexion réussie - Utilisateur: %s, IP: %s', $username, $ip));
+
             return new RedirectResponse($targetPath);
         }
 

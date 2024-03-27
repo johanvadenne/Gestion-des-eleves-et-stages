@@ -10,10 +10,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Psr\Log\LoggerInterface;
 
 #[Route('/etude')]
 class EtudeController extends AbstractController
 {
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     #[Route('/', name: 'app_etude_index', methods: ['GET'])]
     public function index(EtudeRepository $etudeRepository): Response
     {
@@ -30,6 +38,8 @@ class EtudeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('NOUVELLE FORMATION');
+
             $entityManager->persist($etude);
             $entityManager->flush();
 
@@ -57,6 +67,8 @@ class EtudeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('FORMATION MODIFIÉE');
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_etude_index', [], Response::HTTP_SEE_OTHER);
@@ -72,6 +84,8 @@ class EtudeController extends AbstractController
     public function delete(Request $request, Etude $etude, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etude->getId(), $request->getPayload()->get('_token'))) {
+            $this->logger->info('FORMATION SUPPRIMÉE');
+
             $entityManager->remove($etude);
             $entityManager->flush();
         }

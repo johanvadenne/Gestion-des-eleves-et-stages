@@ -10,10 +10,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Psr\Log\LoggerInterface;
 
 #[Route('/etudiant')]
 class EtudiantController extends AbstractController
 {
+
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+    
     #[Route('/', name: 'app_etudiant_index', methods: ['GET'])]
     public function index(EtudiantRepository $etudiantRepository): Response
     {
@@ -30,6 +39,7 @@ class EtudiantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('NOUVELLE ÉTUDIANT');
             $entityManager->persist($etudiant);
             $entityManager->flush();
 
@@ -57,6 +67,7 @@ class EtudiantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('ÉTUDIANT MODIFIÉE');
             $entityManager->flush();
 
             return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
@@ -72,6 +83,7 @@ class EtudiantController extends AbstractController
     public function delete(Request $request, Etudiant $etudiant, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etudiant->getId(), $request->getPayload()->get('_token'))) {
+            $this->logger->info('ÉTUDIANT SUPPRIMÉE');
             $entityManager->remove($etudiant);
             $entityManager->flush();
         }

@@ -6,12 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Psr\Log\LoggerInterface;
 
 class SecurityController extends AbstractController
 {
+
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
@@ -20,6 +30,17 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
+
+        if ($error) {
+            $username = $lastUsername ?? 'Unknown';
+            $ip = $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
+            $this->logger->error(sprintf(
+                'Tentative de connexion échouée - Utilisateur: %s, IP: %s, Erreur: %s',
+                $username,
+                $ip,
+                $error->getMessage()
+            ));
+        }
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
