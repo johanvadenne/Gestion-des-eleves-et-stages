@@ -22,11 +22,14 @@ class StageApprentissage
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $DateFin = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'stageApprentissages')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Etudiant $IdEtudiant = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'stageApprentissage')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Entreprise $IdEntreprise = null;
+
 
     public function getId(): ?int
     {

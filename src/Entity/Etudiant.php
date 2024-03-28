@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EtudiantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
@@ -21,6 +23,14 @@ class Etudiant
 
     #[ORM\ManyToOne(inversedBy: 'etudiants')]
     private ?Etude $IdEtude = null;
+
+    #[ORM\OneToMany(targetEntity: StageApprentissage::class, mappedBy: 'IdEtudiant', orphanRemoval: true)]
+    private Collection $stageApprentissages;
+
+    public function __construct()
+    {
+        $this->stageApprentissages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +69,36 @@ class Etudiant
     public function setIdEtude(?Etude $IdEtude): static
     {
         $this->IdEtude = $IdEtude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StageApprentissage>
+     */
+    public function getStageApprentissages(): Collection
+    {
+        return $this->stageApprentissages;
+    }
+
+    public function addStageApprentissage(StageApprentissage $stageApprentissage): static
+    {
+        if (!$this->stageApprentissages->contains($stageApprentissage)) {
+            $this->stageApprentissages->add($stageApprentissage);
+            $stageApprentissage->setIdEtudiant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStageApprentissage(StageApprentissage $stageApprentissage): static
+    {
+        if ($this->stageApprentissages->removeElement($stageApprentissage)) {
+            // set the owning side to null (unless already changed)
+            if ($stageApprentissage->getIdEtudiant() === $this) {
+                $stageApprentissage->setIdEtudiant(null);
+            }
+        }
 
         return $this;
     }
