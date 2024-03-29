@@ -9,15 +9,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomEtude</th>
+                <th>Nom formation</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for etude in etudes %}
             <tr>
-                <td>{{ etude.id }}</td>
                 <td>{{ etude.NomEtude }}</td>
                 <td>
                     <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_etude_show', {'id': etude.id}) }}">👀</a>
