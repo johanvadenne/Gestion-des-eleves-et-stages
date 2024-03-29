@@ -10,10 +10,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>DateDebut</th>
-                <th>DateFin</th>
-                <th>tes1</th>
-                <th>tes2</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>étudiant</th>
+                <th>entreprise</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
                 <td>{{ stage_apprentissage.id }}</td>
                 <td>{{ stage_apprentissage.DateDebut ? stage_apprentissage.DateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ stage_apprentissage.DateFin ? stage_apprentissage.DateFin|date('Y-m-d') : '' }}</td>
-                <td>{{ stage_apprentissage.IdEtudiant is not null and stage_apprentissage.IdEtudiant.NomEleve is defined ? stage_apprentissage.IdEtudiant.NomEleve : 'ELEVE NON EXISTANT'  }}</td>
+                <td>{{ stage_apprentissage.IdEtudiant.NomEleve }} {{ stage_apprentissage.IdEtudiant.PrenomEtudiant  }}</td>
                 <td>{{ stage_apprentissage.IdEntreprise.NomEntreprise }}</td>
                 <td>
                     <a class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{{ path('app_stage_apprentissage_show', {'id': stage_apprentissage.id}) }}">👀</a>

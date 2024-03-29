@@ -9,17 +9,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomEleve</th>
-                <th>PrenomEtudiant</th>
-                <th>Etude</th>
+                <th>Nom éleve</th>
+                <th>Prenom étudiant</th>
+                <th>formation</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for etudiant in etudiants %}
             <tr>
-                <td>{{ etudiant.id }}</td>
                 <td>{{ etudiant.NomEleve }}</td>
                 <td>{{ etudiant.PrenomEtudiant }}</td>
                 <td>{{ etudiant.IdEtude.NomEtude }}</td>

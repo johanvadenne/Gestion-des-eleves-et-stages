@@ -9,19 +9,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomEntreprise</th>
+                <th>Nom entreprise</th>
                 <th>Mail</th>
                 <th>Adresse</th>
                 <th>Ville</th>
-                <th>SiteWeb</th>
+                <th>Site WEB</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.NomEntreprise }}</td>
                 <td>{{ entreprise.Mail }}</td>
                 <td>{{ entreprise.Adresse }}</td>
