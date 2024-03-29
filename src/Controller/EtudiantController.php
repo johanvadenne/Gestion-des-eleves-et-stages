@@ -27,7 +27,7 @@ class EtudiantController extends AbstractController
     public function index(EtudiantRepository $etudiantRepository): Response
     {
         return $this->render('etudiant/index.html.twig', [
-            'etudiants' => $etudiantRepository->findAllWithRelations(),
+            'etudiants' => $etudiantRepository->findAllWithRelationEtude(),
         ]);
     }
 
@@ -39,7 +39,7 @@ class EtudiantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('NOUVELLE ÉTUDIANT');
+            $this->logger->info('NOUVELLE ÉTUDIANT'); // log
             $entityManager->persist($etudiant);
             $entityManager->flush();
 
@@ -67,7 +67,7 @@ class EtudiantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('ÉTUDIANT MODIFIÉE');
+            $this->logger->info('ÉTUDIANT MODIFIÉE'); // log
             $entityManager->flush();
 
             return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
@@ -83,7 +83,7 @@ class EtudiantController extends AbstractController
     public function delete(Request $request, Etudiant $etudiant, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etudiant->getId(), $request->getPayload()->get('_token'))) {
-            $this->logger->info('ÉTUDIANT SUPPRIMÉE');
+            $this->logger->info('ÉTUDIANT SUPPRIMÉE'); // log
             $entityManager->remove($etudiant);
             $entityManager->flush();
         }

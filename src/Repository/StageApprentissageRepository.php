@@ -21,7 +21,8 @@ class StageApprentissageRepository extends ServiceEntityRepository
         parent::__construct($registry, StageApprentissage::class);
     }
 
-    public function findAllWithRelations()
+    // Permets de faire une jointure avec l'entité Étudiant & Entreprise
+    public function findAllWithRelationEtudiantEtEntreprise()
     {
         return $this->createQueryBuilder('s')
             ->leftJoin('s.IdEtudiant', 'e')

@@ -21,7 +21,8 @@ class EtudiantRepository extends ServiceEntityRepository
         parent::__construct($registry, Etudiant::class);
     }
 
-    public function findAllWithRelations()
+    // Permets de faire une jointure avec l'entité Étude
+    public function findAllWithRelationEtude()
     {
         return $this->createQueryBuilder('e')
             ->leftJoin('e.IdEtude', 'ie')

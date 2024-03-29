@@ -54,8 +54,7 @@ class GestionEtudiantStageAuthenticator extends AbstractLoginFormAuthenticator
             $username = $lastUsername ?? 'Unknown';
             $ip = $request->getClientIp();
 
-            // Ajoutez un message de journalisation pour la connexion réussie
-            $this->logger->info(sprintf('Connexion réussie - Utilisateur: %s, IP: %s', $username, $ip));
+            $this->logger->info(sprintf('Connexion réussie - Utilisateur: %s, IP: %s', $username, $ip)); // log
 
             return new RedirectResponse($targetPath);
         }

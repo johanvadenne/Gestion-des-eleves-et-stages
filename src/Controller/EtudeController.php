@@ -38,7 +38,7 @@ class EtudeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('NOUVELLE FORMATION');
+            $this->logger->info('NOUVELLE FORMATION'); // log
 
             $entityManager->persist($etude);
             $entityManager->flush();
@@ -67,7 +67,7 @@ class EtudeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('FORMATION MODIFIÉE');
+            $this->logger->info('FORMATION MODIFIÉE'); // log
 
             $entityManager->flush();
 
@@ -84,7 +84,7 @@ class EtudeController extends AbstractController
     public function delete(Request $request, Etude $etude, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etude->getId(), $request->getPayload()->get('_token'))) {
-            $this->logger->info('FORMATION SUPPRIMÉE');
+            $this->logger->info('FORMATION SUPPRIMÉE'); // log
 
             $entityManager->remove($etude);
             $entityManager->flush();

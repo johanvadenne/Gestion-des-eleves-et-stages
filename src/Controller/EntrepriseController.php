@@ -38,7 +38,7 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('NOUVELLE ENTREPRISE');
+            $this->logger->info('NOUVELLE ENTREPRISE'); // log
 
             $entityManager->persist($entreprise);
             $entityManager->flush();
@@ -67,7 +67,7 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->logger->info('ENTREPRISE MODIFIÉE');
+            $this->logger->info('ENTREPRISE MODIFIÉE'); // log
 
             $entityManager->flush();
 
@@ -84,7 +84,7 @@ class EntrepriseController extends AbstractController
     public function delete(Request $request, Entreprise $entreprise, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->getPayload()->get('_token'))) {
-            $this->logger->info('ENTREPRISE SUPPRIMÉE');
+            $this->logger->info('ENTREPRISE SUPPRIMÉE'); // log
 
             $entityManager->remove($entreprise);
             $entityManager->flush();

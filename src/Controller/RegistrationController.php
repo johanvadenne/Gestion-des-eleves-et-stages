@@ -32,7 +32,7 @@ class RegistrationController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $this->logger->info('NOUVELLE UTILISATEUR');
+            $this->logger->info('NOUVELLE UTILISATEUR'); // log
             
             // encode the plain password
             $user->setPassword(

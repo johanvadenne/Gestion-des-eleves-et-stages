@@ -16,6 +16,7 @@ class AccueilController extends AbstractController
         $this->logger = $logger;
     }
 
+    // Menu du site web
     #[Route('/', name: 'app_accueil')]
     public function index(): Response
     {

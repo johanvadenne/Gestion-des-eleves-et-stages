@@ -18,7 +18,7 @@ class StageApprentissageController extends AbstractController
     public function index(StageApprentissageRepository $stageApprentissageRepository): Response
     {
         return $this->render('stage_apprentissage/index.html.twig', [
-            'stage_apprentissages' => $stageApprentissageRepository->findAllWithRelations(),
+            'stage_apprentissages' => $stageApprentissageRepository->findAllWithRelationEtudiantEtEntreprise(),
         ]);
     }
 
@@ -30,6 +30,7 @@ class StageApprentissageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('NOUVELLE STAGE ENTREPRISE'); // log
             $entityManager->persist($stageApprentissage);
             $entityManager->flush();
 
@@ -57,6 +58,7 @@ class StageApprentissageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->logger->info('STAGE ENTREPRISE MODIFIÉE'); // log
             $entityManager->flush();
 
             return $this->redirectToRoute('app_stage_apprentissage_index', [], Response::HTTP_SEE_OTHER);
@@ -72,6 +74,7 @@ class StageApprentissageController extends AbstractController
     public function delete(Request $request, StageApprentissage $stageApprentissage, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$stageApprentissage->getId(), $request->getPayload()->get('_token'))) {
+            $this->logger->info('STAGE ENTREPRISE SUPPRIMÉE'); // log
             $entityManager->remove($stageApprentissage);
             $entityManager->flush();
         }
