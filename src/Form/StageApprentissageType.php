@@ -23,7 +23,9 @@ class StageApprentissageType extends AbstractType
             ])
             ->add('IdEtudiant', EntityType::class, [
                 'class' => Etudiant::class,
-                'choice_label' => 'NomEleve',
+                'choice_label' => function ($etudiant) {
+                    return $etudiant->getNomEleve() . ' ' . $etudiant->getPrenomEtudiant();
+                }
             ])
             ->add('IdEntreprise', EntityType::class, [
                 'class' => Entreprise::class,
