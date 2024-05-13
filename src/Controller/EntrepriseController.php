@@ -24,11 +24,11 @@ class EntrepriseController extends AbstractController
 
     #[Route('/', name: 'app_entreprise_index', methods: ['GET'])]
     public function index(EntrepriseRepository $entrepriseRepository): Response
-    {
-        return $this->render('entreprise/index.html.twig', [
-            'entreprises' => $entrepriseRepository->findAll(),
-        ]);
-    }
+{
+    return $this->render('entreprise/index.html.twig', [
+        'entreprises' => $entrepriseRepository->findAll(),
+    ]);
+}
 
     #[Route('/new', name: 'app_entreprise_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
